@@ -37,5 +37,18 @@ public class listagemVIEW extends javax.swing.JFrame {
         }
     }
 
-    // Aqui você adiciona o restante do código da interface, incluindo o initComponents()
+    private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {
+    int selectedRow = tabelaProdutos.getSelectedRow();
+    if (selectedRow != -1) {
+        int id = (int) tabelaProdutos.getValueAt(selectedRow, 0);
+        ProdutosDAO produtodao = new ProdutosDAO();
+        produtodao.venderProduto(id);
+
+        carregarProdutos();  // Atualiza a listagem após a venda
+        javax.swing.JOptionPane.showMessageDialog(this, "Produto vendido com sucesso!");
+    } else {
+        javax.swing.JOptionPane.showMessageDialog(this, "Selecione um produto para vender.");
+    }
+}
+
 }

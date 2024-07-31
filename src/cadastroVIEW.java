@@ -208,7 +208,12 @@ public class cadastroVIEW extends javax.swing.JFrame {
                 new cadastroVIEW().setVisible(true);
             }
         });
+        
     }
+private void btnConsultarVendasActionPerformed(java.awt.event.ActionEvent evt) {
+    vendasVIEW vendas = new vendasVIEW();
+    vendas.setVisible(true);
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;

@@ -154,8 +154,25 @@ public class cadastroVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutosActionPerformed
-        listagemVIEW listagem = new listagemVIEW(); 
-        listagem.setVisible(true);
+        try {
+        ProdutosDTO produto = new ProdutosDTO();
+        String nome = cadastroNome.getText();
+        String valor = cadastroValor.getText();
+        String status = "A Venda";
+        produto.setNome(nome);
+        produto.setValor(Integer.parseInt(valor));
+        produto.setStatus(status);
+
+        ProdutosDAO produtodao = new ProdutosDAO();
+        produtodao.cadastrarProduto(produto);
+
+        // Exibir mensagem de sucesso
+        javax.swing.JOptionPane.showMessageDialog(this, "Produto cadastrado com sucesso!");
+
+    } catch (Exception e) {
+        // Exibir mensagem de erro
+        javax.swing.JOptionPane.showMessageDialog(this, "Erro ao cadastrar produto: " + e.getMessage());
+    }
     }//GEN-LAST:event_btnProdutosActionPerformed
 
     /**
@@ -191,7 +208,12 @@ public class cadastroVIEW extends javax.swing.JFrame {
                 new cadastroVIEW().setVisible(true);
             }
         });
+        
     }
+private void btnConsultarVendasActionPerformed(java.awt.event.ActionEvent evt) {
+    vendasVIEW vendas = new vendasVIEW();
+    vendas.setVisible(true);
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
